@@ -3,47 +3,67 @@
   <head>
     <meta charset="utf-8">
     <title>Headlines</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Headlines</h1>
-    <h2>Current weather</h2>
-    <form>
-      <input type="text" name="city" placeholder="weather search">
-      <input type="submit" value="Submit">
-    </form>
-    <p>City: <b>{{weather.city}}, {{weather.country}}</b></p>
-    <p>{{weather.description}} |{{weather.temperature}}&#8451;</p>
-    <h2>Currency</h2>
-    <form>
-      from:
-      <select name="currency_from">
-        {% for currency in currencies %}
-          <option value="{{currency}}"
-          {{'selected="selected"' if currency_from==currency}}>{{currency}}</option>
-        {% endfor %}
-      </select>
-      to:
-      <select name="currency_to">
-        {% for currency in currencies %}
-          <option value="{{currency}}"
-          {{'selected="selected"' if currency_from==currency}}>{{currency}}</option>
-        {% endfor %}
-      </select>
-      <input type="submit" value="Submit">
-    </form>
-    <br>
-    1 {{currency_from}} = {{currency_to}} {{rate}}
-    <h2>Headlines</h2>
-    <form>
-      <input type="text" name="publication" placeholder="search" />
-      <input type="submit" value="Submit" />
-    </form>
-    <br />
-    {% for article in articles %}
-      <b><a href="{{article.link}}">{{article.title}}</a></b><br />
-      <i>{{article.published}}</i><br />
-      <p>{{article.summary}}</p>
-      <hr />
-    {% endfor %}
+    <header>
+      <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class=display-4>Headlines</h1>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Current weather</h2>
+            <form>
+              <input type="text" name="city" placeholder="weather search">
+              <input type="submit" value="Submit">
+            </form>
+            <p>City: <b>{{weather.city}}, {{weather.country}}</b></p>
+            <p>{{weather.description}} |{{weather.temperature}}&#8451;</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Currency</h2>
+            <form>
+              from:
+              <select name="currency_from">
+                {% for currency in currencies %}
+                  <option value="{{currency}}"
+                  {{'selected="selected"' if currency_from==currency}}>{{currency}}</option>
+                {% endfor %}
+              </select>
+              to:
+              <select name="currency_to">
+                {% for currency in currencies %}
+                  <option value="{{currency}}"
+                  {{'selected="selected"' if currency_from==currency}}>{{currency}}</option>
+                {% endfor %}
+              </select>
+              <input type="submit" value="Submit">
+            </form>
+            <br>
+            1 {{currency_from}} = {{currency_to}} {{rate}}
+          </div>
+        </div>
+      </div>
+    </header>
+    <main role="main">
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <h2>Headlines</h2>
+          <form>
+            <input type="text" name="publication" placeholder="search" />
+            <input type="submit" value="Submit" />
+          </form>
+          {% for article in articles %}
+            <b><a href="{{article.link}}">{{article.title}}</a></b><br />
+            <i>{{article.published}}</i><br />
+            <p>{{article.summary}}</p>
+            <hr />
+          {% endfor %}
+        </div>
+      </div>
+    </main>
   </body>
 </html>
